@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Downloaded packages-->
+    <script src="./js/packages/angular.min.js" type="text/javascript"></script>
+    <!-- My scripts-->
+    <script src="./js/app.js" type="text/javascript"></script>
+    <script src="./js/services/menu-search-service.js" type="text/javascript"></script>
+    <script src="./js/controllers/narrow-it-down-controller.js" type="text/javascript"></script>
+    <script src="./js/directives/found-items-directive.js" type="text/javascript"></script>
+  </head>
+<body ng-app="NarrowItDownApp">
+   <div class="container" ng-controller="NarrowItDownController as narrowItDownCtrl">
+    <h1>Narrow Down Your Chinese Menu Choice</h1>
+
+    <div class="row">
+        <div class="cl-lg-4">
+          <input type="text" placeholder="search term" class="form-control" ng-model="narrowItDownCtrl.searchTerm">
+        </div>
+        <div class="cl-lg-4 narrow-button">
+          <button class="btn btn-primary" ng-click="narrowItDownCtrl.searchItems(narrowItDownCtrl.searchTerm)">Narrow It Down For Me!</button>
+        </div>
+      </div>
+      <div class="row top10">
+        <div class="cl-lg-12 form-group alert" ng-class="{'alert-success': narrowItDownCtrl.isSuccessAlert, 'alert-danger' : narrowItDownCtrl.isNotFoundAlert}">
+          {{ narrowItDownCtrl.message; }}
+        </div>
+      </div>
+      <!-- found-items should be implemented as a component -->
+      <div class="row">
+          <div class="cl-lg-12">
+            <found-items found-items="narrowItDownCtrl.found" on-remove="narrowItDownCtrl.onRemove(index)"></found-items>
+          </div>
+      </div>
+  </div>
+</body>
+</html>
