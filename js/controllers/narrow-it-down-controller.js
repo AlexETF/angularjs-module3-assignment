@@ -35,7 +35,7 @@
         narrowItDownCtrl.isSuccessAlert = true;
         narrowItDownCtrl.isNotFoundAlert = false;
       }else{
-        narrowItDownCtrl.message = "Not found !";
+        narrowItDownCtrl.message = "Nothing found";
         narrowItDownCtrl.isSuccessAlert = false;
         narrowItDownCtrl.isNotFoundAlert = true;
       }
